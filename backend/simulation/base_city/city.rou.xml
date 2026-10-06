@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Deterministic Vehicle Types (sigma=0.0 removes driver randomness) -->
+    <vType id="standard_car" accel="2.6" decel="4.5" sigma="0.0" length="4.5" minGap="2.5" maxSpeed="13.89" guiShape="passenger"/>
+    <vType id="public_transit_bus" accel="1.2" decel="3.5" sigma="0.0" length="12.0" minGap="3.0" maxSpeed="11.11" guiShape="bus"/>
+
+    <!-- Corridor Routes across 3x3 Grid -->
+    <!-- Row 0: West-East & East-West -->
+    <route id="r_we_row0" edges="e_n00_n10 e_n10_n20"/>
+    <route id="r_ew_row0" edges="e_n20_n10 e_n10_n00"/>
+
+    <!-- Row 1: Central Arterial West-East & East-West -->
+    <route id="r_we_row1" edges="e_n01_n11 e_n11_n21"/>
+    <route id="r_ew_row1" edges="e_n21_n11 e_n11_n01"/>
+
+    <!-- Row 2: West-East & East-West -->
+    <route id="r_we_row2" edges="e_n02_n12 e_n12_n22"/>
+    <route id="r_ew_row2" edges="e_n22_n12 e_n12_n02"/>
+
+    <!-- Column 0: South-North & North-South -->
+    <route id="r_sn_col0" edges="e_n00_n01 e_n01_n02"/>
+    <route id="r_ns_col0" edges="e_n02_n01 e_n01_n00"/>
+
+    <!-- Column 1: Central Arterial South-North & North-South -->
+    <route id="r_sn_col1" edges="e_n10_n11 e_n11_n12"/>
+    <route id="r_ns_col1" edges="e_n12_n11 e_n11_n10"/>
+
+    <!-- Column 2: South-North & North-South -->
+    <route id="r_sn_col2" edges="e_n20_n21 e_n21_n22"/>
+    <route id="r_ns_col2" edges="e_n22_n21 e_n21_n20"/>
+
+    <!-- Turning / Crossing Routes -->
+    <route id="r_turn_w_s" edges="e_n01_n11 e_n11_n10"/>
+    <route id="r_turn_s_e" edges="e_n10_n11 e_n11_n21"/>
+
+    <!-- Staggered Deterministic Vehicle Departures -->
+    <vehicle id="veh_00" type="standard_car" route="r_we_row1" depart="0.0"/>
+    <vehicle id="veh_01" type="standard_car" route="r_sn_col1" depart="2.0"/>
+    <vehicle id="veh_02" type="public_transit_bus" route="r_we_row0" depart="4.0"/>
+    <vehicle id="veh_03" type="standard_car" route="r_ns_col1" depart="6.0"/>
+    <vehicle id="veh_04" type="standard_car" route="r_ew_row1" depart="8.0"/>
+    <vehicle id="veh_05" type="standard_car" route="r_sn_col0" depart="10.0"/>
+    <vehicle id="veh_06" type="standard_car" route="r_turn_w_s" depart="12.0"/>
+    <vehicle id="veh_07" type="standard_car" route="r_we_row1" depart="14.0"/>
+    <vehicle id="veh_08" type="public_transit_bus" route="r_sn_col1" depart="16.0"/>
+    <vehicle id="veh_09" type="standard_car" route="r_turn_s_e" depart="18.0"/>
+    <vehicle id="veh_10" type="standard_car" route="r_ew_row2" depart="20.0"/>
+    <vehicle id="veh_11" type="standard_car" route="r_ns_col2" depart="22.0"/>
+    <vehicle id="veh_12" type="standard_car" route="r_we_row1" depart="24.0"/>
+    <vehicle id="veh_13" type="standard_car" route="r_sn_col1" depart="26.0"/>
+    <vehicle id="veh_14" type="standard_car" route="r_ew_row0" depart="28.0"/>
+    <vehicle id="veh_15" type="standard_car" route="r_ns_col0" depart="30.0"/>
+    <vehicle id="veh_16" type="standard_car" route="r_we_row2" depart="32.0"/>
+    <vehicle id="veh_17" type="standard_car" route="r_sn_col2" depart="34.0"/>
+    <vehicle id="veh_18" type="public_transit_bus" route="r_we_row1" depart="36.0"/>
+    <vehicle id="veh_19" type="standard_car" route="r_ns_col1" depart="38.0"/>
+    <vehicle id="veh_20" type="standard_car" route="r_ew_row1" depart="40.0"/>
+    <vehicle id="veh_21" type="standard_car" route="r_sn_col1" depart="42.0"/>
+    <vehicle id="veh_22" type="standard_car" route="r_we_row0" depart="45.0"/>
+    <vehicle id="veh_23" type="standard_car" route="r_turn_w_s" depart="48.0"/>
+    <vehicle id="veh_24" type="standard_car" route="r_turn_s_e" depart="50.0"/>
+</routes>
