@@ -1,0 +1,25 @@
+@"
+# Python
+backend/venv/
+__pycache__/
+*.pyc
+
+# Unity generated files
+frontend/Library/
+frontend/Temp/
+frontend/Obj/
+frontend/Logs/
+frontend/UserSettings/
+
+# Build files
+Build/
+Builds/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+"@ | Out-File -Encoding utf8 .gitignore
