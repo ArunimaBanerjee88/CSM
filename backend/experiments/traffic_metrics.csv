@@ -1,4 +1,0 @@
-Scenario,Unique Vehicles,Peak Active Vehicles,Avg Speed (m/s),Avg Waiting Time (s),Cumulative Waiting (s),Congestion Index,Traffic Flow Efficiency
-Baseline 2030,25,19,8.0,57.39,5739.0,0.4245,0.5755
-Eco Future 2030,19,17,7.83,37.4,3740.0,0.4367,0.5633
-Smart Mobility 2030,14,14,11.09,11.0,1100.0,0.2022,0.7978

@@ -53,7 +53,7 @@ namespace QuantumCity.UI
                 rt.anchoredPosition = Vector2.zero;
 
                 Image img = panelGo.AddComponent<Image>();
-                img.color = new Color(0.05f, 0.1f, 0.2f, 0.8f);
+                img.color = new Color(0.12f, 0.16f, 0.22f, 0.94f); // Clean pastel slate panel
 
                 VerticalLayoutGroup vlg = panelGo.AddComponent<VerticalLayoutGroup>();
                 vlg.padding = new RectOffset(20, 20, 50, 20);
@@ -75,22 +75,23 @@ namespace QuantumCity.UI
             btnGo.transform.SetParent(parent, false);
 
             Image img = btnGo.AddComponent<Image>();
-            img.color = new Color(0.1f, 0.3f, 0.5f, 1f);
+            img.color = new Color(0.24f, 0.38f, 0.52f, 1f); // Pastel steel blue
 
             Button btn = btnGo.AddComponent<Button>();
             btn.onClick.AddListener(action);
 
             LayoutElement le = btnGo.AddComponent<LayoutElement>();
-            le.minHeight = 40;
+            le.minHeight = 44;
 
             GameObject textGo = new GameObject("Text");
             textGo.transform.SetParent(btnGo.transform, false);
             
             TextMeshProUGUI tmp = textGo.AddComponent<TextMeshProUGUI>();
             tmp.text = label;
-            tmp.fontSize = 16;
+            tmp.fontSize = 15;
+            tmp.fontStyle = FontStyles.Bold;
             tmp.alignment = TextAlignmentOptions.Center;
-            tmp.color = Color.white;
+            tmp.color = new Color(0.96f, 0.98f, 1.0f);
             
             RectTransform textRt = textGo.GetComponent<RectTransform>();
             textRt.anchorMin = Vector2.zero;

@@ -129,6 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 100000001}
   - component: {fileID: 100000002}
+  - component: {fileID: 100000003}
+  - component: {fileID: 100000004}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -163,6 +165,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9885c5ee5c7054e4c90a67f537f815f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: QuantumCity.Core.GameManager
+  targetFrameRate: 30
+  enableVSync: 0
+  cityGridBuilder: {fileID: 0}
+  dashboardController: {fileID: 0}
+--- !u!114 &100000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a2e69277a840c4ca76392383a75c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuantumCity.Traffic.InteractiveTrafficSystem
+--- !u!114 &100000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8e4fad899e5f14988b53e2dc83154e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuantumCity.City.CityLightingController
+  directionalLight: {fileID: 400000002}
+  nightLight: {fileID: 0}
+  dayLightColor: {r: 1, g: 0.95, b: 0.85, a: 1}
+  dayLightIntensity: 1.2
+  dayAmbientColor: {r: 0.82, g: 0.86, b: 0.9, a: 1}
+  daySkyColor: {r: 0.55, g: 0.78, b: 0.98, a: 1}
+  nightLightColor: {r: 0.55, g: 0.68, b: 0.9, a: 1}
+  nightLightIntensity: 0.25
+  nightAmbientColor: {r: 0.12, g: 0.16, b: 0.22, a: 1}
+  nightSkyColor: {r: 0.025, g: 0.05, b: 0.1, a: 1}
+  moonLightColor: {r: 0.55, g: 0.7, b: 1, a: 1}
+  moonIntensity: 0.18
+  transitionSpeed: 2
+  dayRotation: {x: 50, y: -30, z: 0}
+  nightRotation: {x: 145, y: -30, z: 0}
 --- !u!1 &200000000
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +252,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3169f038e9c13f743ac854a282bf5af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: QuantumCity.City.CityGridBuilder
+  gridWidth: 10
+  gridDepth: 10
+  blockSize: 12
+  roadWidth: 2.5
+  minBuildingsPerBlock: 2
+  maxBuildingsPerBlock: 6
+  minHeight: 1
+  maxHeight: 12
+  buildingMaterial: {fileID: 0}
+  roadMaterial: {fileID: 0}
+  windowMaterial: {fileID: 0}
 --- !u!1 &300000000
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +274,7 @@ GameObject:
   - component: {fileID: 300000001}
   - component: {fileID: 300000003}
   - component: {fileID: 300000002}
+  - component: {fileID: 300000004}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -249,7 +306,7 @@ Camera:
   m_GameObject: {fileID: 300000000}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.02, g: 0.04, b: 0.12, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -303,6 +360,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eebaf6625617d04bb96c9717a4df5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: QuantumCity.Core.CameraController
+  orbitSpeed: 3
+  minPitch: 10
+  maxPitch: 80
+  panSpeed: 20
+  zoomSpeed: 10
+  minZoom: 5
+  maxZoom: 120
+  focusPoint: {x: 0, y: 0, z: 0}
+  startingDistance: 60
+  startingPitch: 45
+  startingYaw: -30
+--- !u!114 &300000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &400000000
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400000001}
   - component: {fileID: 400000002}
+  - component: {fileID: 400000003}
   m_Layer: 0
   m_Name: DirectionalLight
   m_TagString: Untagged
@@ -400,6 +513,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &400000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &450000000
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +662,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22784bba8be22045863a54bca99228d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: QuantumCity.UI.DashboardController
+  backendUrl: http://127.0.0.1:8000
+  cityNameText: {fileID: 0}
+  simStatusText: {fileID: 0}
+  fpsText: {fileID: 0}
+  trafficFlowText: {fileID: 0}
+  energyText: {fileID: 0}
+  vehiclesText: {fileID: 0}
+  congestionText: {fileID: 0}
+  trafficPredictionText: {fileID: 0}
+  energyPredictionText: {fileID: 0}
+  quantumResultText: {fileID: 0}
+  classicalResultText: {fileID: 0}
+  benchmarkText: {fileID: 0}
+  runSimulationButton: {fileID: 0}
+  predictTrafficButton: {fileID: 0}
+  predictEnergyButton: {fileID: 0}
+  quantumOptimizationButton: {fileID: 0}
+  classicalOptimizationButton: {fileID: 0}
+  benchmarkButton: {fileID: 0}
+  sidePanel: {fileID: 0}
+  sidePanelToggleButton: {fileID: 0}
+  simulationSteps: 100
 --- !u!223 &500000003
 Canvas:
   m_ObjectHideFlags: 0
@@ -553,7 +717,7 @@ RectTransform:
   m_GameObject: {fileID: 500000000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -563,6 +727,109 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &666819914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 666819916}
+  - component: {fileID: 666819915}
+  m_Layer: 0
+  m_Name: APIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &666819915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666819914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4563463f2073941be6b1a07241815a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::APIManager
+  baseUrl: http://127.0.0.1:8000
+--- !u!4 &666819916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666819914}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2146524323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2146524325}
+  - component: {fileID: 2146524324}
+  m_Layer: 0
+  m_Name: TrafficVisualizer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2146524324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146524323}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800aead3e69e175469d88c4f4e8af7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuantumCity.Visualization.TrafficVisualizer
+  backendUrl: http://127.0.0.1:8000
+  trafficParent: {fileID: 2146524325}
+  carPrefab: {fileID: 0}
+  roadMinX: -70
+  roadMaxX: 70
+  roadMinZ: -70
+  roadMaxZ: 70
+  initialCars: 50
+  maximumVisibleCars: 150
+  carSpeed: 5
+  carHeight: 0.35
+  autoRunSimulation: 0
+  refreshInterval: 5
+  showDebugLogs: 1
+--- !u!4 &2146524325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146524323}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -573,3 +840,5 @@ SceneRoots:
   - {fileID: 400000001}
   - {fileID: 450000001}
   - {fileID: 500000004}
+  - {fileID: 666819916}
+  - {fileID: 2146524325}

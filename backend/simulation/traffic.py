@@ -297,6 +297,7 @@ class TrafficSimulator:
         gui: bool = False,
         sumo_config_path: Optional[Union[str, Path]] = None,
         world: Optional[Any] = None,
+        step_callback: Optional[Any] = None,
     ) -> TrafficSimulationResult:
         """Run a traffic simulation on the base city network and return structured results.
 
@@ -308,6 +309,7 @@ class TrafficSimulator:
             world: Optional World object. When supplied, scenario-specific traffic demand
                    is generated from world.parameters.traffic (congestion_multiplier,
                    autonomous_vehicle_ratio).
+            step_callback: Optional callback invoked every step: callback(traci, step_idx, step_metrics)
 
         Returns:
             TrafficSimulationResult containing aggregates and per-step observations.
@@ -345,6 +347,7 @@ class TrafficSimulator:
                 sumo_config_path=str(config_file),
                 steps=steps,
                 world=world,
+                step_callback=step_callback,
             )
         finally:
             # Clean up temporary scenario files if they were created

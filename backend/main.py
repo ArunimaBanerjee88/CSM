@@ -41,12 +41,19 @@ from api.simulation import router as simulation_router
 from api.prediction import router as prediction_router
 from api.optimization import router as optimization_router
 from api.analytics import router as analytics_router
+from api.dynamic_traffic import router as dynamic_traffic_router
+from api import dynamic_traffic 
+from api.traffic_benchmark_export import router as traffic_benchmark_router
+
 
 app.include_router(worlds_router)
 app.include_router(simulation_router)
 app.include_router(prediction_router)
 app.include_router(optimization_router)
 app.include_router(analytics_router)
+app.include_router(dynamic_traffic_router)
+app.include_router(dynamic_traffic.router)
+app.include_router(traffic_benchmark_router)
 
 
 @app.get("/")

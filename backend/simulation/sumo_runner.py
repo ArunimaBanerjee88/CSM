@@ -105,6 +105,7 @@ class SUMORunner:
         steps: int = 100,
         world: Optional[Union[Dict[str, Any], Any]] = None,
         additional_sumo_args: Optional[List[str]] = None,
+        step_callback: Optional[Any] = None,
     ) -> SimulationResult:
         """Execute a SUMO traffic simulation for a given scenario and collect metrics.
 
@@ -184,6 +185,10 @@ class SUMORunner:
                         total_waiting_time=round(step_waiting, 2),
                     )
                 )
+
+                if step_callback:
+                    step_callback(traci, step_idx, step_metrics)
+
 
         except Exception as exc:
             if isinstance(exc, (SUMONotInstalledError, SUMOConfigurationError, ValueError)):
